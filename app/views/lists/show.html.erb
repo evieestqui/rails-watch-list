@@ -1,6 +1,15 @@
-<div class="list-header" style="background-image: url('<%= @list.image_url || 'default-bg.jpg' %>');">
+<div class="list-header" style="background-image: url('<%= 'default-bg.jpg' %>');">
   <h1><%= @list.name %></h1>
+  <%= link_to 'add', new_list_bookmark_path(@list) %>
 </div>
+
+<% @list.bookmarks.each do |bookmark| %>
+<div>
+<%= bookmark.movie.title %>
+<%= image_tag bookmark.movie.poster_url , height:200 %>
+<%= bookmark.comment %>
+</div>
+<% end %>
 
 <style>
 .list-header {
